@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 module.exports.updateEmployee = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
-  const { id, nombre, cargo, edad } =  JSON.parse(event.body);
+  const { id, edad } =  JSON.parse(event.body);
   const timestamp = new Date().getTime();
 
 

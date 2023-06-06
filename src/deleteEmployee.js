@@ -13,8 +13,7 @@ module.exports.getEmployee = async (event) => {
   };
 
   // Escribimos en la base de datos
-  const result = await dynamoDb.delete(params).promise();
-  const employee = JSON.stringify(result.Item);
+await dynamoDb.delete(params).promise();
 
   // Se retorna objeto response
   return {
