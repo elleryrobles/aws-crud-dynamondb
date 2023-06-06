@@ -1,0 +1,11 @@
+{
+  "name": "aws-crud-serverless",
+  "author": "Elerys David Robles Gómez",
+  "license": "ISC",
+  "description": "<!-- title: 'CRUD en AWS con Serverless Framework' description: 'Prueba Tecnica Stefanini' -->",
+  "version": "1.0.0",
+  "dependencies": {
+    "aws-sdk": "^2.1391.0",
+    "uuid": "^9.0.0"
+  }
+}
