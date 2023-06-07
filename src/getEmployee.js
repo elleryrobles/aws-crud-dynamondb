@@ -14,11 +14,10 @@ module.exports.getEmployee = async (event) => {
 
   // Escribimos en la base de datos
   const result = await dynamoDb.get(params).promise();
-  const employee = JSON.stringify(result.Item);
 
   // Se retorna objeto response
   return {
     status: 200,
-    body: employee,
+    body: result && result.Item,
   };
 }

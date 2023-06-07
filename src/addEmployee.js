@@ -5,16 +5,16 @@ module.exports.addEmployee = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-  const { identificacion, edad, nombre, cargo } = JSON.parse(event.body);
+  const data = JSON.parse(event.body);
   const timestamp = new Date().getTime();
 
   // Asignamos valores de la petición
   const newEmployee = {
     id: uuid.v4(),
-    identificacion: identificacion,
-    edad: edad,
-    nombre: nombre,
-    cargo: cargo,
+    identificacion: data.identificacion,
+    edad: data.edad,
+    nombre: data.nombre,
+    cargo: data.cargo,
     createdAt: timestamp,
     updatedAt: timestamp
   };

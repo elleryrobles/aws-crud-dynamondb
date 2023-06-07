@@ -3,18 +3,20 @@ const AWS = require('aws-sdk');
 module.exports.updateEmployee = async (event) => {
 
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
-  const { id, edad } =  JSON.parse(event.body);
+  const data =  JSON.parse(event.body);
   const timestamp = new Date().getTime();
-
 
   // Creamos los parametros
   const params = {
     TableName: "EmployeeTable",
-    Key: { id },
-    UpdateExpression: 'set edad = :edad',
+    Key: { id: data.id },
     ExpressionAttributeValues: {
-      ':edad': edad
+      ':nombre': data.nombre,
+      ':edad': data.edad,
+      ':cargo': data.cargo,
+      ':updatedAt': timestamp,
     },
+    UpdateExpression: 'SET nombre = :nombre, edad = :edad, cargo = :cargo, updatedAt = :updatedAt',
     ReturnValues: "ALL_NEW"
   };
 
@@ -24,6 +26,6 @@ module.exports.updateEmployee = async (event) => {
   // Se retorna objeto response
   return {
     status: 200,
-    body: JSON.stringify({message: "Registro actualizado exitosamente!"}),
+    message: "Registro actualizado exitosamente!"
   };
 }
